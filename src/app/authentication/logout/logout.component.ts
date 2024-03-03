@@ -14,7 +14,6 @@ export class LogoutComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    console.log('logout2');
     axios.get('http://localhost:3000/logout')
       .then(response => {
         console.log(response);

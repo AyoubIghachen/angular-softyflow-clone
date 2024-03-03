@@ -5,13 +5,13 @@ import { ResetPasswordComponent } from './authentication/reset-password/reset-pa
 import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './authentication/logout/logout.component';
-// import { AuthenticationComponent } from './authentication/authentication.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
 
 export const routes: Routes = [
-    // {
-    //     path: '',
-    //     component: AuthenticationComponent
-    // },
+    {
+        path: '',
+        component: AuthenticationComponent
+    },
     {
         path: 'home',
         component: HomeComponent

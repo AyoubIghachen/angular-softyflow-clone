@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 
 @Component({
@@ -11,4 +11,12 @@ import { HomeComponent } from './home/home.component';
 })
 export class AppComponent {
   title = 'angular-app2';
+
+  constructor(private router: Router) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        console.log('NavigationEnd:', event);
+      }
+    });
+  }
 }
