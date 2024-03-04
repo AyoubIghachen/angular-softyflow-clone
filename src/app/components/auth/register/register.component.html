@@ -1,0 +1,75 @@
+<div class="flex justify-content-center align-items-center h-full">
+    <p-toast></p-toast>
+    <form [formGroup]="registerForm" (ngSubmit)="submitDetails()">
+        <p-card header="Register" [style]="{width: '360px' }">
+            <div class="field">
+                <label for="firstName">First name</label>
+                <input type="text" pInputText formControlName="firstName" class="w-full" name="firstName"
+                    placeholder="Type your first name" />
+                <small *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="block p-error">
+                    <div *ngIf="firstName.errors?.['required']">First name is required.</div>
+                    <div *ngIf="firstName.errors?.['pattern']">Enter a valid name.</div>
+                </small>
+            </div>
+
+            <div class="field">
+                <label for="lastName">Last name</label>
+                <input type="text" pInputText formControlName="lastName" class="w-full" name="lastName"
+                    placeholder="Type your last name" />
+                <small *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="block p-error">
+                    <div *ngIf="lastName.errors?.['required']">Last name is required.</div>
+                    <div *ngIf="lastName.errors?.['pattern']">Enter a valid name.</div>
+                </small>
+            </div>
+
+            <div class="field">
+                <label for="email">Email</label>
+                <input type="text" pInputText formControlName="email" class="w-full" name="email"
+                    placeholder="Type your email" />
+                <small *ngIf="email.invalid && (email.dirty || email.touched)" class="block p-error">
+                    <div *ngIf="email.errors?.['required']">Email is required.</div>
+                    <div *ngIf="email.errors?.['email']">Email should be valid.</div>
+                </small>
+            </div>
+
+            <div class="field">
+                <label for="password">Password</label>
+                <input type="password" pInputText formControlName="password" class="w-full" name="password"
+                    placeholder="Type your password" />
+                <small *ngIf="password.invalid && (password.dirty || password.touched)" class="block p-error">
+                    <div *ngIf="password.errors?.['required']">Password is required.</div>
+                </small>
+            </div>
+
+            <div class="field">
+                <label for="confirmPassword">Confirm password</label>
+                <input type="password" pInputText formControlName="confirmPassword" class="w-full"
+                    name="confirmPassword" placeholder="Type your password again" />
+                <small *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)"
+                    class="block p-error">
+                    <div *ngIf="confirmPassword.errors?.['required']">Confirm password is required.</div>
+                </small>
+                <small *ngIf="registerForm.errors?.['passwordMismatch'] && confirmPassword.valid && password.valid"
+                    class="block p-error">
+                    Password should match.
+                </small>
+            </div>
+
+            <div class="field">
+                <label for="age">Age</label>
+                <input type="number" pInputText formControlName="age" class="w-full" name="age"
+                    placeholder="Type your age" />
+                <small *ngIf="age.invalid && (age.dirty || age.touched)" class="block p-error">
+                    <div *ngIf="age.errors?.['min']">Age should be greater than 0.</div>
+                    <div *ngIf="age.errors?.['max']">Age should be less than 100.</div>
+                </small>
+            </div>
+
+            <p-button label="REGISTER" styleClass="w-full" [disabled]="registerForm.invalid" type="submit"></p-button>
+
+            <div class="mt-2">
+                Already have an account? <a routerLink="/login">Sign in</a>
+            </div>
+        </p-card>
+    </form>
+</div>

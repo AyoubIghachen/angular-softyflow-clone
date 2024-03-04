@@ -1,17 +1,16 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './authentication/login/login.component';
-import { RegisterComponent } from './authentication/register/register.component';
-import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
-import { DashboardComponent } from './home/dashboard/dashboard.component';
-import { HomeComponent } from './home/home.component';
-import { LogoutComponent } from './authentication/logout/logout.component';
-import { AuthenticationComponent } from './authentication/authentication.component';
-import { Page404Component } from './page404/page404.component';
+import { AuthComponent } from './pages/auth/auth.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { RegisterComponent } from './components/auth/register/register.component';
+import { ResetPasswordComponent } from './components/auth/reset-password/reset-password.component';
+import { Page404Component } from './pages/page404/page404.component';
+import { IdeComponent } from './pages/ide/ide.component';
+import { HomeComponent } from './pages/home/home.component';
 
 export const routes: Routes = [
     {
         path: '',
-        component: AuthenticationComponent
+        component: AuthComponent
     },
     {
         path: 'home',
@@ -19,7 +18,7 @@ export const routes: Routes = [
     },
     {
         path: 'ide',
-        component: DashboardComponent
+        component: IdeComponent
     },
     {
         path: 'login',
@@ -32,10 +31,6 @@ export const routes: Routes = [
     {
         path: 'reset-password',
         component: ResetPasswordComponent
-    },
-    {
-        path: 'logout',
-        component: LogoutComponent
     },
     {
         path: 'page404',
