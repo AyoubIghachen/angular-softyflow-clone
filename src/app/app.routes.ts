@@ -6,6 +6,7 @@ import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './authentication/logout/logout.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
+import { Page404Component } from './page404/page404.component';
 
 export const routes: Routes = [
     {
@@ -35,5 +36,12 @@ export const routes: Routes = [
     {
         path: 'logout',
         component: LogoutComponent
+    },
+    {
+        path: 'page404',
+        component: Page404Component
+    },
+    {
+        path: '**', redirectTo: 'page404', pathMatch: 'full'
     }
 ];

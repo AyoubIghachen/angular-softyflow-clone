@@ -1,0 +1,29 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-item {
+    flex: 1;
+    margin-right: 30px;
+}
+
+.form-row .form-item:last-child {
+    margin-right: 0;
+}
+
+.logo {
+    width: 220px;
+    height: auto;
+    margin-left: -40px;
+}
+
+div {
+    position: relative;
+}

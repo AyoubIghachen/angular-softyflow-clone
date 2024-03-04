@@ -1,0 +1,42 @@
+.error-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.error-details {
+    max-width: 500px;
+    margin-right: 50px;
+    color: #434343;
+}
+
+.error-details h1 {
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+
+.error-details h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.error-details p {
+    margin-bottom: 20px;
+}
+
+.go-home-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    background-color: #f6283a;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.error-image img {
+    max-width: 500px;
+    width: 100%;
+}
