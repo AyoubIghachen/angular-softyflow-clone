@@ -24,35 +24,39 @@ export class LoginComponent {
     password: ['', Validators.required]
   });
 
-  constructor(private fb: FormBuilder, 
-    private authService: AuthService, 
+  constructor(private fb: FormBuilder,
+    private authService: AuthService,
     private messageService: MessageService,
     private router: Router) { }
 
-  get email(){
+  get email() {
     return this.loginForm.controls['email'];
   }
 
-  get password(){
+  get password() {
     return this.loginForm.controls['password'];
   }
 
-  loginUser(){
-    const user = {...this.loginForm.value};
-    this.authService.loginUser(user as User).then(
-      (response: any) => {
+  loginUser() {
+    const user = { ...this.loginForm.value };
+
+    this.authService.loginUser(user as User).subscribe({
+      next: (response: any) => {
         console.log(response);
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Login successfully' });
         setTimeout(() => {
           this.router.navigate(['home']);
-        }, 2000);
-      }
-    ).catch(
-      (error: any) => {
+        }, 1000);
+      },
+      error: (error: any) => {
         console.error(error);
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong' });
+        if (error.status === 400) {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Email or password is wrong' });
+        }else {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong' });
+        }
       }
-    )
+    })
   }
 
 }

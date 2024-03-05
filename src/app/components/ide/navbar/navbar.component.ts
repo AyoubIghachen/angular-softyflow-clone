@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent implements OnInit{
+export class NavbarComponent implements OnInit {
   user: User | null = null;
 
   @Output() save = new EventEmitter<void>();
@@ -56,19 +56,18 @@ export class NavbarComponent implements OnInit{
   }
 
   logout() {
-    this.authService.logout().then(
-      (response: any) => {
+    this.authService.logout().subscribe({
+      next: (response: any) => {
         console.log(response);
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Logout successfully' });
         setTimeout(() => {
           this.router.navigate(['login']);
-        }, 2000);
-      }
-    ).catch(
-      (error: any) => {
+        }, 1000);
+      },
+      error: (error: any) => {
         console.error(error);
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong' });
       }
-    )
+    })
   }
 }

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import axios from 'axios';
 import { User } from '../../interfaces/User';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,18 +8,22 @@ import { User } from '../../interfaces/User';
 export class AuthService {
   private baseUrl = 'http://localhost:3000';
 
-  constructor(private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   registerUser(userDetails: User) {
-    return axios.post(`${this.baseUrl}/register`, userDetails);
+    return this.http.post(`${this.baseUrl}/register`, userDetails);
   }
 
   loginUser(userDetails: User) {
-    return axios.post(`${this.baseUrl}/login`, userDetails);
+    return this.http.post(`${this.baseUrl}/login`, userDetails);
   }
 
   logout() {
-    return axios.get(`${this.baseUrl}/logout`);
+    return this.http.get(`${this.baseUrl}/logout`);
+  }
+
+  refreshToken() {
+    return this.http.post(`${this.baseUrl}/refresh-token`, {});
   }
 
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavbarComponent } from '../../components/ide/navbar/navbar.component';
 import { SidebarComponent } from '../../components/ide/sidebar/sidebar.component';
 import { ConfigComponent } from '../../components/ide/config/config.component';
+import { AuthService } from '../../_services/auth/auth.service';
 
 @Component({
   selector: 'app-ide',
@@ -12,11 +13,13 @@ import { ConfigComponent } from '../../components/ide/config/config.component';
 })
 export class IdeComponent {
 
-  save(){
+  constructor(private authService: AuthService) { }
+
+  save() {
     console.log('save');
   }
 
-  displayResult(){
+  displayResult() {
     console.log('display result');
   }
 

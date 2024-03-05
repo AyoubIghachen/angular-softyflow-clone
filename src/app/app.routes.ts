@@ -1,24 +1,15 @@
 import { Routes } from '@angular/router';
-import { AuthComponent } from './pages/auth/auth.component';
-import { LoginComponent } from './components/auth/login/login.component';
-import { RegisterComponent } from './components/auth/register/register.component';
-import { ResetPasswordComponent } from './components/auth/reset-password/reset-password.component';
 import { Page404Component } from './pages/page404/page404.component';
 import { IdeComponent } from './pages/ide/ide.component';
 import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/auth/login/login.component';
+import { RegisterComponent } from './pages/auth/register/register.component';
+import { ResetPasswordComponent } from './pages/auth/reset-password/reset-password.component';
 
 export const routes: Routes = [
     {
         path: '',
-        component: AuthComponent
-    },
-    {
-        path: 'home',
-        component: HomeComponent
-    },
-    {
-        path: 'ide',
-        component: IdeComponent
+        component: LoginComponent
     },
     {
         path: 'login',
@@ -31,6 +22,14 @@ export const routes: Routes = [
     {
         path: 'reset-password',
         component: ResetPasswordComponent
+    },
+    {
+        path: 'home',
+        component: HomeComponent
+    },
+    {
+        path: 'ide',
+        component: IdeComponent
     },
     {
         path: 'page404',

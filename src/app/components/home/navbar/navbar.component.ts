@@ -20,19 +20,18 @@ export class NavbarComponent {
     private router: Router) { }
 
   logout() {
-    this.authService.logout().then(
-      (response: any) => {
+    this.authService.logout().subscribe({
+      next: (response: any) => {
         console.log(response);
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Logout successfully' });
         setTimeout(() => {
           this.router.navigate(['login']);
-        }, 2000);
-      }
-    ).catch(
-      (error: any) => {
+        }, 1000);
+      },
+      error: (error: any) => {
         console.error(error);
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong' });
       }
-    )
+    })
   }
 }
