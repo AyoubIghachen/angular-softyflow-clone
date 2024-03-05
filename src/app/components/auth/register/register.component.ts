@@ -1,22 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { passwordMatchValidator } from '../../../shared/password-match.directive';
 import { AuthService } from '../../../_services/auth/auth.service';
 import { User } from '../../../interfaces/User';
-import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
-
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CardModule, InputTextModule, ButtonModule, ReactiveFormsModule, RouterLink, CommonModule, ToastModule, BrowserAnimationsModule],
+  imports: [CardModule, InputTextModule, ButtonModule, ReactiveFormsModule, RouterLink, CommonModule, ToastModule],
   providers: [MessageService],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
@@ -34,7 +32,11 @@ export class RegisterComponent {
     validators: passwordMatchValidator
   })
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private messageService: MessageService) { }
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private messageService: MessageService,
+    private router: Router) { }
 
   get firstName() {
     return this.registerForm.controls['firstName'];
@@ -64,11 +66,21 @@ export class RegisterComponent {
     const postData = { ...this.registerForm.value };
     delete postData.confirmPassword;
     console.log(postData);
-    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Register successfully' });
-    // this.authService.registerUser(postData as User).subscribe(
-    //   response => {console.log(response); this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content' });},
-    //   error => console.error(error)
-    // )
+    
+    this.authService.registerUser(postData as User).then(
+      (response: any) => {
+        console.log(response);
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Register successfully' });
+        setTimeout(() => {
+          this.router.navigate(['login']);
+        }, 2000);
+      }
+    ).catch(
+      (error: any) => {
+        console.error(error);
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong' });
+      }
+    )
   }
 
 }

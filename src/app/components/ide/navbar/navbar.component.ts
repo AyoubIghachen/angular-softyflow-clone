@@ -4,11 +4,15 @@ import { JwtPayload } from '../../../interfaces/JwtPayload';
 import Cookies from 'js-cookie';
 import { jwtDecode } from "jwt-decode";
 import { AuthService } from '../../../_services/auth/auth.service';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [],
+  imports: [ToastModule],
+  providers: [MessageService],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
@@ -18,7 +22,11 @@ export class NavbarComponent implements OnInit{
   @Output() save = new EventEmitter<void>();
   @Output() displayResult = new EventEmitter<void>();
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private messageService: MessageService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     const token = Cookies.get('token');
@@ -48,6 +56,19 @@ export class NavbarComponent implements OnInit{
   }
 
   logout() {
-    this.authService.logout();
+    this.authService.logout().then(
+      (response: any) => {
+        console.log(response);
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Logout successfully' });
+        setTimeout(() => {
+          this.router.navigate(['login']);
+        }, 2000);
+      }
+    ).catch(
+      (error: any) => {
+        console.error(error);
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong' });
+      }
+    )
   }
 }

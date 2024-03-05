@@ -7,7 +7,6 @@ import { User } from '../../interfaces/User';
   providedIn: 'root'
 })
 export class AuthService {
-  isLoggedIn = false;
   private baseUrl = 'http://localhost:3000';
 
   constructor(private router: Router) { }
@@ -16,20 +15,12 @@ export class AuthService {
     return axios.post(`${this.baseUrl}/register`, userDetails);
   }
 
-  login(username: string, password: string): boolean {
-
-    this.isLoggedIn = true;
-    return this.isLoggedIn;
+  loginUser(userDetails: User) {
+    return axios.post(`${this.baseUrl}/login`, userDetails);
   }
 
-  logout(): void {
-    axios.get('http://localhost:3000/logout')
-      .then(response => {
-        console.log(response);
-        this.router.navigate(['/login']);
-      })
-      .catch(error => { console.log(error) });
-    this.isLoggedIn = false;
+  logout() {
+    return axios.get(`${this.baseUrl}/logout`);
   }
 
 }
