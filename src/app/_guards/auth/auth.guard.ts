@@ -22,13 +22,13 @@ export const authGuard: CanActivateFn = (route, state) => {
         switchMap((response: any) => {
           const newToken = response.accessToken;
           cookieService.set('token', newToken);
-          return of(true); // Wrap the boolean in an Observable
+          return of(true);
         }),
         catchError((error) => {
           console.log(error);
           cookieService.delete('token');
           const router = inject(Router);
-          return of(router.navigate(['login'])); // Wrap the navigation result in an Observable
+          return of(router.navigate(['login']));
         })
       );
     }

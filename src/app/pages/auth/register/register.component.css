@@ -14,3 +14,8 @@
     background: url('../../../../assets/crop-softyflow2.gif') repeat; 
     background-size: 20px;
 } */
+
+.zoom-class{
+    /* zoom: 0.8; */
+    transform: scale(0.8)
+}

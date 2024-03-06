@@ -14,3 +14,8 @@
     -o-background-size: cover;
     background-size: cover;
 }
+
+.zoom-class{
+    /* zoom: 0.8; */
+    transform: scale(0.8)
+}
