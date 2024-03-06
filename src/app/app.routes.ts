@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { ResetPasswordComponent } from './pages/auth/reset-password/reset-password.component';
+import { authGuard } from './_guards/auth/auth.guard';
 
 export const routes: Routes = [
     {
@@ -25,11 +26,13 @@ export const routes: Routes = [
     },
     {
         path: 'home',
-        component: HomeComponent
+        component: HomeComponent,
+        canActivate: [authGuard]
     },
     {
         path: 'ide',
-        component: IdeComponent
+        component: IdeComponent,
+        canActivate: [authGuard]
     },
     {
         path: 'page404',

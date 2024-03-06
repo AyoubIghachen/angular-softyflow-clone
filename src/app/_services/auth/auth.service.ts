@@ -26,4 +26,8 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/refresh-token`, {});
   }
 
+  resetPassword(userDetails: User) {
+    return this.http.post(`${this.baseUrl}/send-email`, userDetails);
+  }
+
 }
