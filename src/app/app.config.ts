@@ -4,8 +4,8 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { routes } from './app.routes';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { WithCredentialsInterceptor } from './shared/with-credentials.interceptor';
-import { AuthInterceptor } from './shared/auth.interceptor';
+import { WithCredentialsInterceptor } from '@app/_interceptor/with-credentials.interceptor';
+import { AuthInterceptor } from '@app/_interceptor/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [

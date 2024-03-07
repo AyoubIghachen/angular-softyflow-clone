@@ -2,8 +2,8 @@ import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { CookieService } from 'ngx-cookie-service';
-import { DecodedToken } from '../../interfaces/DecodedToken';
-import { AuthService } from '../../_services/auth/auth.service';
+import { DecodedToken } from '../../_interfaces/DecodedToken';
+import { AuthService } from '../../_services/auth.service';
 import { catchError, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
@@ -18,7 +18,7 @@ export const authGuard: CanActivateFn = (route, state) => {
 
     if (isTokenExpired) {
       const authService = inject(AuthService);
-      authService.refreshToken().pipe(
+      return authService.refreshToken().pipe(
         switchMap((response: any) => {
           const newToken = response.accessToken;
           cookieService.set('token', newToken);
@@ -28,7 +28,8 @@ export const authGuard: CanActivateFn = (route, state) => {
           console.log(error);
           cookieService.delete('token');
           const router = inject(Router);
-          return of(router.navigate(['login']));
+          router.navigate(['login']);
+          return of(false);
         })
       );
     }

@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, from } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
-import { AuthService } from '../_services/auth/auth.service';
+import { AuthService } from '../_services/auth.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { jwtDecode } from 'jwt-decode';
-import { DecodedToken } from '../interfaces/DecodedToken';
+import { DecodedToken } from '../_interfaces/DecodedToken';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {

@@ -1,0 +1,14 @@
+<nav class="navbar">
+    <div class="navbar-content">
+        <img alt="Softyflow logo" src="/assets/crop-SoftyClone.gif" class="logo">
+        <div class="user-name">
+            {{ user?.firstName }} {{ user?.lastName }}
+        </div>
+    </div>
+    <div class="navbar-actions">
+        <button *ngIf="isIdePage" class="icon-button" (click)="onSave()" title="Save interface"><i class="fas fa-save"></i></button>
+        <button *ngIf="isIdePage" class="icon-button" (click)="onDisplayResult()" title="View interface"><i class="fas fa-eye"></i></button>
+        <button class="icon-button" (click)="logout()" title="Logout"><i class="fas fa-sign-out-alt"></i></button>
+    </div>
+</nav>
+<p-toast></p-toast>

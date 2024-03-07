@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { Page404Component } from './pages/page404/page404.component';
-import { IdeComponent } from './pages/ide/ide.component';
-import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/auth/login/login.component';
-import { RegisterComponent } from './pages/auth/register/register.component';
-import { ResetPasswordComponent } from './pages/auth/reset-password/reset-password.component';
-import { authGuard } from './_guards/auth/auth.guard';
+import { Page404Component } from '@app/pages/page404/page404.component';
+import { IdeComponent } from '@app/pages/ide/ide.component';
+import { HomeComponent } from '@app/pages/home/home.component';
+import { LoginComponent } from '@app/pages/auth/login/login.component';
+import { RegisterComponent } from '@app/pages/auth/register/register.component';
+import { ResetPasswordComponent } from '@app/pages/auth/reset-password/reset-password.component';
+import { authGuard } from '@app/_guards/auth/auth.guard';
 
 export const routes: Routes = [
     {

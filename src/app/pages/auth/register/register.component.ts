@@ -1,20 +1,16 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
-import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
-import { InputTextModule } from 'primeng/inputtext';
-import { passwordMatchValidator } from '../../../shared/password-match.directive';
-import { AuthService } from '../../../_services/auth/auth.service';
-import { User } from '../../../interfaces/User';
-import { ToastModule } from 'primeng/toast';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { passwordMatchValidator } from '@app/_helpers/password-match.directive';
+import { AuthService } from '@app/_services/auth.service';
+import { User } from '@app/_interfaces/User';
 import { MessageService } from 'primeng/api';
+import { AuhtImports } from '@app/_shared/auth-imports';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CardModule, InputTextModule, ButtonModule, ReactiveFormsModule, RouterLink, CommonModule, ToastModule],
+  imports: [...AuhtImports],
   providers: [MessageService],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'

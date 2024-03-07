@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { NavbarComponent } from '../../components/ide/navbar/navbar.component';
-import { SidebarComponent } from '../../components/ide/sidebar/sidebar.component';
-import { ConfigComponent } from '../../components/ide/config/config.component';
-import { AuthService } from '../../_services/auth/auth.service';
+import { SidebarComponent } from '@app/components/ide/sidebar/sidebar.component';
+import { ConfigComponent } from '@app/components/ide/config/config.component';
+import { AuthService } from '@app/_services/auth.service';
+import { NavbarComponent } from '@app/components/navbar/navbar.component';
 
 @Component({
   selector: 'app-ide',

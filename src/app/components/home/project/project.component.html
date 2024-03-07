@@ -1,0 +1,21 @@
+<div class="header">
+    <h1>Projects</h1>
+    <p-button icon="pi pi-plus" (click)="createNewProject()"></p-button>
+    <div>
+        Create new Project
+    </div>
+    <p-menubar [model]="items">
+        <ng-template pTemplate="start">
+            <input [(ngModel)]="searchTerm" placeholder="Search projects">
+        </ng-template>
+    </p-menubar>
+</div>
+
+<div class="project-cards">
+    <div class="project-card" *ngFor="let project of filteredProjects">
+        <div class="project-details">
+            <h2>{{project.name}}</h2>
+            <p>{{project.description}}</p>
+        </div>
+    </div>
+</div>

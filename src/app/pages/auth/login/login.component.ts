@@ -1,19 +1,15 @@
 import { Component } from '@angular/core';
-import { CardModule } from 'primeng/card';
-import { InputTextModule } from 'primeng/inputtext';
-import { ButtonModule } from 'primeng/button';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { ToastModule } from 'primeng/toast';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { AuthService } from '../../../_services/auth/auth.service';
-import { User } from '../../../interfaces/User';
+import { AuthService } from '@app/_services/auth.service';
+import { User } from '@app/_interfaces/User';
+import { AuhtImports } from '@app/_shared/auth-imports';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CardModule, InputTextModule, ButtonModule, ReactiveFormsModule, RouterLink, CommonModule, ToastModule],
+  imports: [...AuhtImports],
   providers: [MessageService],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
