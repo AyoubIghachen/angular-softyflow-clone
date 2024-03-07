@@ -1,14 +1,17 @@
 <div class="header">
-    <h1>Projects</h1>
-    <p-button icon="pi pi-plus" (click)="createNewProject()"></p-button>
-    <div>
-        Create new Project
+    <div class="title-section">
+        <h1>Projects</h1>
+        <div class="create-project">
+            <button class="create-project-button" (click)="createNewProject()">
+                <i class="pi pi-plus"></i>
+            </button>
+            <div class="name">Create new Project</div>
+        </div>
     </div>
-    <p-menubar [model]="items">
-        <ng-template pTemplate="start">
-            <input [(ngModel)]="searchTerm" placeholder="Search projects">
-        </ng-template>
-    </p-menubar>
+    <div class="menu-bar">
+        <input [(ngModel)]="searchTerm" (input)="searchProjects()" placeholder="Search projects">
+        <i class="pi pi-search"></i>
+    </div>
 </div>
 
 <div class="project-cards">

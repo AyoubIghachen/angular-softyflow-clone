@@ -1,41 +1,77 @@
 .header {
     display: flex;
-    /* justify-content: space-between; */
-    align-items: center;
-    padding: 20px;
-    background-color: #f4f4f4;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-}
-
-.header h1 {
-    margin: 0;
-    color: red;
-}
-
-.header button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.header button:hover {
-    background-color: #0056b3;
-}
-
-.header p-menubar {
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 15px;
+    margin-top: 5px;
     margin-left: 20px;
+    margin-right: 20px;
+    // box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 }
 
-.header input {
-    padding: 5px;
-    border: 1px solid #ccc;
+.title-section {
+    flex: 3;
+}
+
+.title-section h1 {
+    font-size: 20px;
+    margin: 0;
+    color: #f6283a;
+}
+
+.create-project {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.create-project-button {
+    margin-right: 8px;
+    background-color: #f6283a;
+    border-radius: 30%;
+    // background: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 10px 0 rgb(255, 0, 0);
+}
+
+.create-project-button .pi {
+    color: rgb(255, 255, 255);
+    font-size: 0.8em;
+}
+
+.menu-bar {
+    margin-right: 3px;
+    flex: 4;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    background-color: #f4f4f4;
     border-radius: 5px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
 }
 
+.menu-bar:hover {
+    box-shadow: 0 0 2px 0 rgba(255, 0, 0, 0.5);
+}
+
+// .menu-bar:hover i {
+//     color: #f6283a;
+// }
+
+.menu-bar input {
+    flex: 1;
+    border: none;
+    padding: 5px 10px;
+    font-size: 1.25em;
+}
+
+.menu-bar i {
+    margin-left: 10px;
+    margin-right: 6px;
+    color: #333;
+    font-size: 1.2em;
+}
 
 
 
@@ -48,7 +84,8 @@ h1 {
 .project-cards {
     display: flex;
     flex-wrap: wrap;
-    margin: 20px;
+    margin-top: 10px;
+    margin-left: 20px;
     /* justify-content: space-between; */
 }
 
@@ -68,7 +105,8 @@ h1 {
 }
 
 .project-card:hover {
-    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
+    background-color: #f7f7f7;
+    box-shadow: 0 0 10px 0 rgba(255, 0, 0, 0.5);
 }
 
 .project-details {
