@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectService } from '@app/_services/project.service';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +16,7 @@ export class ProjectComponent implements OnInit {
   projects: any[] = [];
   searchTerm = '';
   filteredProjects: any[] = [];
+  @Output() showCreateDialog = new EventEmitter<boolean>();
 
   constructor(private projectService: ProjectService) { }
 
@@ -26,8 +27,9 @@ export class ProjectComponent implements OnInit {
     });
   }
 
-  createNewProject() {
+  displayCreateDialog() {
     console.log('Create new project');
+    this.showCreateDialog.emit(true);
   }
 
   searchProjects() {
