@@ -7,7 +7,7 @@ import { ProjectComponent } from '@app/components/home/project/project.component
   standalone: true,
   imports: [NavbarComponent, ProjectComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.scss'
 })
 export class HomeComponent {
 

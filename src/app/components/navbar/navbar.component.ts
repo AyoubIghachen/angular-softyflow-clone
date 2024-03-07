@@ -12,7 +12,7 @@ import { AuthService } from '@app/_services/auth.service';
   imports: [ToastModule, CommonModule],
   providers: [MessageService],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit {
   user: User | null = null;

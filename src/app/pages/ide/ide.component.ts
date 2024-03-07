@@ -9,7 +9,7 @@ import { NavbarComponent } from '@app/components/navbar/navbar.component';
   standalone: true,
   imports: [NavbarComponent, SidebarComponent, ConfigComponent],
   templateUrl: './ide.component.html',
-  styleUrl: './ide.component.css'
+  styleUrl: './ide.component.scss'
 })
 export class IdeComponent {
 

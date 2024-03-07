@@ -13,7 +13,7 @@ import { ButtonModule } from 'primeng/button';
   standalone: true,
   imports: [MenubarModule, CardModule, CommonModule, FormsModule, ButtonModule],
   templateUrl: './project.component.html',
-  styleUrl: './project.component.css'
+  styleUrl: './project.component.scss'
 })
 export class ProjectComponent implements OnInit {
 

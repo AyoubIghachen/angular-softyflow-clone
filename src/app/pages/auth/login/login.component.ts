@@ -12,7 +12,7 @@ import { AuhtImports } from '@app/_shared/auth-imports';
   imports: [...AuhtImports],
   providers: [MessageService],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.scss'
 })
 export class LoginComponent {
   loginForm = this.fb.group({

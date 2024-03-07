@@ -13,7 +13,7 @@ import { AuhtImports } from '@app/_shared/auth-imports';
   imports: [...AuhtImports],
   providers: [MessageService],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
 
