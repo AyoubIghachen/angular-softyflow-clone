@@ -1,6 +1,21 @@
 <div class="header">
     <div class="title-section">
         <h1>Projects</h1>
+    </div>
+    <div class="menu-bar">
+        <input [(ngModel)]="searchTerm" (input)="searchProjects()" placeholder="Find your projects...">
+        <i class="pi pi-search"></i>
+    </div>
+</div>
+
+<div class="project-cards">
+    <div class="create-project-card">
+        <div class="create-project-text">
+            <h2>Add Project</h2>
+        </div>
+        <div class="create-project-text">
+            <p>Start building your project in Softylflow.</p>
+        </div>
         <div class="create-project">
             <button class="create-project-button" (click)="displayCreateDialog()">
                 <i class="pi pi-plus"></i>
@@ -8,17 +23,28 @@
             <div>Create New Project</div>
         </div>
     </div>
-    <div class="menu-bar">
-        <input [(ngModel)]="searchTerm" (input)="searchProjects()" placeholder="Search projects">
-        <i class="pi pi-search"></i>
+    
+    <div class="project-card" *ngFor="let project of filteredProjects | paginate: { itemsPerPage: 11, currentPage: p }" (click)="project.showOptions = false" (click)="openProject(project)">
+        <div class="project-options">
+            <i class="icon-option pi pi-ellipsis-v" (click)="toggleOptions(project, $event)"></i>
+            <div class="options-menu" *ngIf="project.showOptions">
+                <div (click)="updateProject(project)">
+                    <i class="icon-menu pi pi-pencil"></i> Update
+                </div>
+                <div (click)="deleteProject(project)">
+                    <i class="icon-menu pi pi-trash"></i> Delete
+                </div>
+            </div>
+        </div>
+        
+        <div class="project-details">
+            <p class="date">{{project.date | date:'medium'}}</p>
+            <h2>{{project.name}}</h2>
+            <p class="project-description">{{project.description}}</p>
+        </div>
     </div>
 </div>
 
-<div class="project-cards">
-    <div class="project-card" *ngFor="let project of filteredProjects">
-        <div class="project-details">
-            <h2>{{project.name}}</h2>
-            <p>{{project.description}}</p>
-        </div>
-    </div>
+<div class="pagination">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>

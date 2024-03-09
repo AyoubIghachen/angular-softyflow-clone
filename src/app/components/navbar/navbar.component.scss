@@ -1,4 +1,8 @@
 .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -7,6 +11,10 @@
     background-color: #ffffff;
     border-bottom: 1px solid #858585;
     box-shadow: 0 0 2px 0 rgba(255, 0, 0, 0.5);
+}
+
+.navbar:hover {
+    box-shadow: 0 0 10px 0 rgba(255, 0, 0, 0.5);
 }
 
 .navbar-content {
@@ -37,4 +45,8 @@
 
 .icon-button i {
     color: #434343;
+}
+
+.icon-button i:hover {
+    color: #f6283a;
 }
