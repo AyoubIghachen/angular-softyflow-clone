@@ -1,0 +1,30 @@
+<div class="card">
+    <div class="create-interface">
+        <button class="create-interface-button" (click)="displayCreateInterface()">
+            <i class="pi pi-plus"></i>
+        </button>
+        <div>Create New Interface</div>
+    </div>
+
+    <form *ngIf="IsCreateInterface" class="form" [formGroup]="CreateInterfaceForm" (ngSubmit)="createInterface()">
+
+        <div class="field">
+            <label for="name">Interface Name</label>
+            <input type="text" pInputText formControlName="name" class="w-full" name="name" />
+            <small *ngIf="name.invalid && (name.dirty || name.touched)" class="block p-error">
+                <div *ngIf="name.errors?.['required']">Interface name is required.</div>
+            </small>
+        </div>
+
+        <button pButton pRipple class="p-button-raised p-button-danger p-button-text w-full" label="Create interface" [disabled]="CreateInterfaceForm.invalid" type="submit"></button>
+
+    </form>
+
+    <div class="interface-card" *ngFor="let interface of interfaces" (click)="onClickInterface(interface)">
+        <div class="interface-box">
+            <div class="interface-details">
+                <h2><i class="pi pi-file"></i> {{interface.name}}</h2>
+            </div>
+        </div>
+    </div>
+</div>

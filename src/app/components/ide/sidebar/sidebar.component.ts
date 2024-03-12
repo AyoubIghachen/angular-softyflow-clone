@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
+  isOpenWebInterface = false;
+  @Output() openWebInterface = new EventEmitter<boolean>();
+
+  onIconClick() {
+    this.isOpenWebInterface = !this.isOpenWebInterface;
+    this.openWebInterface.emit(this.isOpenWebInterface);
+  }
 
 }

@@ -1,0 +1,18 @@
+<div>
+    <h3 class="widgetProperties">
+        <i class="fas fa-sliders-h"></i>
+        Configurations
+    </h3>
+    <div class="form1">
+        <form *ngIf="selectedWidget" (ngSubmit)="updateWidget()" class="form2">
+            <div class="form-group" *ngFor="let key of getObjectKeys(selectedWidget)">
+                <label [for]="key" class="form-label">{{ key }}</label>
+                <!-- <input [id]="key" [(ngModel)]="selectedWidget.Global[key]" name="{{key}}" class="form-input"> -->
+                <input [id]="'Name'" [(ngModel)]="selectedWidget.Global.Name" name="Name" class="form-input">
+                <input [id]="'Model'" [(ngModel)]="selectedWidget.Global.Model" name="Model" class="form-input">
+                <input [id]="'ID'" [(ngModel)]="selectedWidget.Global.ID" name="ID" class="form-input">
+            </div>
+            <button type="submit" class="btn btn-primary">Update Widget</button>
+        </form>
+    </div>
+</div>

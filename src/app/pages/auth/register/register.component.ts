@@ -67,9 +67,7 @@ export class RegisterComponent {
       next: (response: any) => {
         console.log(response);
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Register successfully' });
-        setTimeout(() => {
-          this.router.navigate(['login']);
-        }, 1000);
+        this.router.navigate(['home']);
       },
       error: (error: any) => {
         console.error(error);

@@ -1,0 +1,7 @@
+<div class="navbar-interface">
+    <div *ngFor="let interface of interfaces" class="interface-window" [class.active]="activeInterface === interface" (click)="onOpenDashboard(interface)">
+        <i class="pi pi-file"></i>
+        {{ interface.name }}
+        <i class="fas fa-times close-icon" (click)="onDeleteInterface(interface)"></i>
+    </div>
+</div>

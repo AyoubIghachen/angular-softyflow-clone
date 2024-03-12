@@ -1,0 +1,18 @@
+<div class="sidebar">
+    <h3 class="widgetName">
+        <i class="fas fa-cogs"></i>
+        Components
+    </h3>
+    <div cdkDropListGroup class="widgets-container">
+        <div cdkDropList [cdkDropListData]="widgets" class="widgets-list" (cdkDropListDropped)="drop($event)">
+            <div *ngFor="let widget of widgets" cdkDrag class="widget">
+                <i [class]="'fas fa-' + widget.icon + ' icon'"></i>
+                <span>{{ widget.name }}</span>
+            </div>
+        </div>
+    </div>
+    <!-- <div *ngFor="let widget of widgets" (click)="selectWidget(widget)" class="widget">
+        <i [class]="'fas fa-' + widget.icon + ' icon'"></i>
+        <span>{{ widget.name }}</span>
+    </div> -->
+</div>

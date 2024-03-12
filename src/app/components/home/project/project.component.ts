@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectService } from '@app/_services/project.service';
 import { FormsModule } from '@angular/forms';
@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
   styleUrl: './project.component.scss'
 })
 export class ProjectComponent implements OnInit {
-  
+
   p: number = 1;
 
   projects: any[] = [];
@@ -27,14 +27,12 @@ export class ProjectComponent implements OnInit {
   constructor(private projectService: ProjectService, private router: Router) { }
 
   ngOnInit() {
-    this.projectService.getProjects().subscribe((projects) => {
-      this.projects = projects;
-      this.filteredProjects = projects;
+    this.projectService.getProjects().subscribe((projects: any) => {
+      this.projects = projects.reverse();
+      this.filteredProjects = [...this.projects];
     });
-  }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['projectCreated'] && changes['projectCreated'].currentValue) {
+    if (this.projectCreated) {
       this.projectCreated.subscribe((project: Project) => {
         this.projects.unshift(project);
         this.filteredProjects.unshift(project);
@@ -72,8 +70,8 @@ export class ProjectComponent implements OnInit {
     console.log('Project deleted : ', project);
   }
 
-  openProject(project: Project){
-    this.router.navigate(['ide']);
+  openProject(project: Project) {
+    this.router.navigate(['ide'], { state: { project: project } });
   }
 
 }

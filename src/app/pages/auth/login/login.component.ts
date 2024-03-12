@@ -40,9 +40,7 @@ export class LoginComponent {
       next: (response: any) => {
         console.log(response);
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Login successfully' });
-        setTimeout(() => {
-          this.router.navigate(['home']);
-        }, 1000);
+        this.router.navigate(['home']);
       },
       error: (error: any) => {
         console.error(error);

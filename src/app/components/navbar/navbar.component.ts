@@ -18,6 +18,7 @@ export class NavbarComponent implements OnInit {
   user: User | null = null;
 
   @Input() isIdePage: boolean = false;
+  @Input() projectName!: string;
 
   @Output() save = new EventEmitter<void>();
   @Output() displayResult = new EventEmitter<void>();

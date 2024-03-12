@@ -51,7 +51,7 @@ export class CreateDialogComponent {
     this.projectService.createProject(project as Project).subscribe({
       next: (response: any) => {
         console.log(response);
-        this.projectCreated.emit(project as Project);
+        this.projectCreated.emit(response as Project);
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Project created successfully' });
         setTimeout(() => {
           this.closeDialog();

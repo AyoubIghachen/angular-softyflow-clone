@@ -1,10 +1,16 @@
+<app-navbar [isIdePage]="true" [projectName]="project.name" (save)=(save())
+    (displayResult)=(displayResult())></app-navbar>
+
 <div class="dashboard">
-    <app-navbar 
-        [isIdePage]="true" 
-        (save)=(save()) 
-        (displayResult)=(displayResult())>
-    </app-navbar>
-    <app-sidebar></app-sidebar>
-    <app-config></app-config>
-    <p>dashboard works!</p>
+    <app-sidebar (openWebInterface)="onShowSidebarExtention($event)"></app-sidebar>
+
+    <app-sidebar-extension *ngIf="showSidebarExtension" [idProject]="project._id"
+        (interfaceSelected)="onInterfaceSelected($event)"></app-sidebar-extension>
+
+    <div class="interface-content">
+        <app-navbar-interface [interfaceData]="selectedInterface"
+            (openDashboard)="onOpenDashboard($event)"></app-navbar-interface>
+        <app-dashboard-interface [interfaceData]="openDashboard"></app-dashboard-interface>
+    </div>
+
 </div>

@@ -14,7 +14,7 @@
             <h2>Add Project</h2>
         </div>
         <div class="create-project-text">
-            <p>Start building your project in Softylflow.</p>
+            <p>Start building your project in Softyflow.</p>
         </div>
         <div class="create-project">
             <button class="create-project-button" (click)="displayCreateDialog()">
@@ -24,21 +24,21 @@
         </div>
     </div>
     
-    <div class="project-card" *ngFor="let project of filteredProjects | paginate: { itemsPerPage: 11, currentPage: p }" (click)="project.showOptions = false" (click)="openProject(project)">
+    <div class="project-card" *ngFor="let project of filteredProjects | paginate: { itemsPerPage: 11, currentPage: p }" (click)="project.showOptions = false; openProject(project)">
         <div class="project-options">
-            <i class="icon-option pi pi-ellipsis-v" (click)="toggleOptions(project, $event)"></i>
+            <i class="icon-option pi pi-ellipsis-v" (click)="toggleOptions(project, $event); $event.stopPropagation()"></i>
             <div class="options-menu" *ngIf="project.showOptions">
-                <div (click)="updateProject(project)">
+                <div (click)="updateProject(project); $event.stopPropagation()">
                     <i class="icon-menu pi pi-pencil"></i> Update
                 </div>
-                <div (click)="deleteProject(project)">
+                <div (click)="deleteProject(project); $event.stopPropagation()">
                     <i class="icon-menu pi pi-trash"></i> Delete
                 </div>
             </div>
         </div>
         
         <div class="project-details">
-            <p class="date">{{project.date | date:'medium'}}</p>
+            <p class="date">{{project.createdAt | date:'medium'}}</p>
             <h2>{{project.name}}</h2>
             <p class="project-description">{{project.description}}</p>
         </div>

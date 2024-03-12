@@ -1,0 +1,41 @@
+<!-- <p>dashboard-interface works!</p>
+<p>{{interfaceData?.name}}</p> -->
+
+<!-- <app-navbar (save)="save()"></app-navbar> -->
+
+<div class="dashboard">
+    <div class="side-bar">
+        <div class="side-bar-container">
+            <h3 class="side-bar-title">
+                <i class="fas fa-cogs"></i>
+                Components
+            </h3>
+            <div id="widgets" cdkDropListConnectedTo="droppedWidgets" cdkDropList [cdkDropListData]="widgets"
+                cdkDropListSortingDisabled (cdkDropListDropped)="drop($event)">
+                <div *ngFor="let widget of widgets" cdkDrag class="side-bar-widget">
+                    <i [class]="'fas fa-' + widget.icon + ' side-bar-widget-icon'"></i>
+                    <span>{{ widget.name }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="droppedWidgets" cdkDropListConnectedTo="widgets" cdkDropList [cdkDropListData]="droppedWidgets"
+        (cdkDropListDropped)="drop($event)" class="component component-2">
+        <div *ngFor="let widget of droppedWidgets" (click)="selectWidget(widget)" class="widget"
+            [class.selected]="selectedWidget && (widget.id === selectedWidget.id)">
+            <div cdkDrag class="widget-content">
+                <p class="widget-name">{{ widget.name }}: </p>
+                <app-widget [widget]="widget"></app-widget>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="DivWidgetForm">
+        <app-widget-form [selectedWidget]="selectedWidget" (update-widget)="updateWidget($event)"></app-widget-form>
+    </div>
+
+    <!-- <button (click)="save()">Save</button> -->
+</div>

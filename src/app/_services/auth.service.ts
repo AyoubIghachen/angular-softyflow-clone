@@ -9,7 +9,7 @@ import { JwtPayload } from '@app/_interfaces/JwtPayload';
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:3000';
+  private baseUrl = '/api';
 
   constructor(private http: HttpClient) { }
 
